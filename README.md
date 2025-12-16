@@ -26,7 +26,7 @@ scikit-learn
 pip install pandas nltk scikit-learn
 ```
 
-3. Ensure the dataset is placed in the correct location:
+3. Ensure your project structure is set up correctly:
 ```
 project/
 ├── src/
@@ -35,17 +35,27 @@ project/
     └── articles.csv
 ```
 
+The code expects the data folder to be one level up from the src folder (`../data/articles.csv`).
+
 ## Dataset Format
 
 The system expects a CSV file (`articles.csv`) with at least an `Article` column containing the text documents. The file should use ISO-8859-1 encoding.
 
 ## Usage
 
-Run the information retrieval system:
+Run the information retrieval system from the src directory:
 
 ```bash
+cd src
 python ir_system.py
 ```
+
+The script will automatically:
+1. Load the dataset from `../data/articles.csv`
+2. Download required NLTK data (punkt, stopwords, wordnet)
+3. Preprocess all documents
+4. Build Boolean and TF-IDF indices
+5. Execute example queries and display results
 
 ### Modifying the Query
 
@@ -146,4 +156,3 @@ TEXT_COL = 'Content'  # Or any other column name
 - Evaluation metrics (precision, recall, F1)
 - Web interface for easier querying
 - Support for multiple document formats (PDF, TXT, JSON)
-
